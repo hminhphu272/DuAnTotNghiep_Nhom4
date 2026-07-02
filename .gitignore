@@ -1,9 +1,3 @@
 target/
-bin/
-*.class
-.metadata/
-Servers/
 *.log
-*.tmp
 .DS_Store
-Thumbs.db
