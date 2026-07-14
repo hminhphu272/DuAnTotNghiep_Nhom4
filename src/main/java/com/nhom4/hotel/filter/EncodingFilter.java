@@ -1,4 +1,4 @@
-package com.nhom4.hotel.util;
+package com.nhom4.hotel.filter;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
@@ -9,7 +9,7 @@ import jakarta.servlet.annotation.WebFilter;
 import java.io.IOException;
 
 @WebFilter("/*")
-public class Utf8Filter implements Filter {
+public class EncodingFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {

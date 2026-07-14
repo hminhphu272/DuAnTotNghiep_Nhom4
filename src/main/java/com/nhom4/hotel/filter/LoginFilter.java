@@ -1,6 +1,8 @@
-package com.nhom4.hotel.util;
+package com.nhom4.hotel.filter;
 
 import com.nhom4.hotel.entity.NguoiDung;
+import com.nhom4.hotel.util.AuthUtil;
+
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -12,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter(urlPatterns = {"/bookings", "/booking/*", "/admin/*", "/checkout", "/invoices"})
-public class AuthFilter implements Filter {
+public class LoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
