@@ -7,7 +7,7 @@
         </div>
         <div>
             <h4>Hỗ trợ nhanh</h4>
-            <p>Hotline: 0900.000.004</p>
+            <p>Hotline: 0902.845.758</p>
             <p>Email: nhom4hotel@example.com</p>
         </div>
         <div>
