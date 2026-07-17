@@ -52,7 +52,7 @@ public class BookingServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String path = req.getServletPath();
         NguoiDung user = AuthUtil.getUser(req.getSession(false));
 
@@ -71,7 +71,7 @@ public class BookingServlet extends HttpServlet {
         resp.sendRedirect(req.getContextPath() + "/bookings");
     }
 
-    private void createBooking(HttpServletRequest req, HttpServletResponse resp, NguoiDung user) throws IOException {
+    private void createBooking(HttpServletRequest req, HttpServletResponse resp, NguoiDung user) throws IOException, ServletException {
         Integer roomId = ParamUtil.getInt(req, "roomId");
         LocalDate ngayNhan = ParamUtil.getDate(req, "ngayNhan");
         LocalDate ngayTra = ParamUtil.getDate(req, "ngayTra");
