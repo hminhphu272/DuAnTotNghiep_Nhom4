@@ -72,6 +72,7 @@
         <url-pattern>/admin/rooms/delete</url-pattern>
     </servlet-mapping>
 
+    <!-- TẠM COMMENT: chưa có LoaiPhongServlet.java, sẽ mở lại khi teammate code xong
     <servlet>
         <servlet-name>LoaiPhongServlet</servlet-name>
         <servlet-class>com.nhom4.hotel.servlet.LoaiPhongServlet</servlet-class>
@@ -82,6 +83,7 @@
         <url-pattern>/admin/types/save</url-pattern>
         <url-pattern>/admin/types/delete</url-pattern>
     </servlet-mapping>
+    -->
 
     <servlet>
         <servlet-name>BookingServlet</servlet-name>
@@ -95,6 +97,17 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>BookingManagementServlet</servlet-name>
+        <servlet-class>com.nhom4.hotel.servlet.BookingManagementServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BookingManagementServlet</servlet-name>
+        <url-pattern>/admin/bookings</url-pattern>
+        <url-pattern>/admin/bookings/status</url-pattern>
+    </servlet-mapping>
+
+    <!-- TẠM COMMENT: chưa có CheckoutServlet.java, sẽ mở lại khi teammate code xong
+    <servlet>
         <servlet-name>CheckoutServlet</servlet-name>
         <servlet-class>com.nhom4.hotel.servlet.CheckoutServlet</servlet-class>
     </servlet>
@@ -103,7 +116,9 @@
         <url-pattern>/checkout</url-pattern>
         <url-pattern>/invoices</url-pattern>
     </servlet-mapping>
+    -->
 
+    <!-- TẠM COMMENT: chưa có ReportServlet.java, sẽ mở lại khi teammate code xong
     <servlet>
         <servlet-name>ReportServlet</servlet-name>
         <servlet-class>com.nhom4.hotel.servlet.ReportServlet</servlet-class>
@@ -112,6 +127,7 @@
         <servlet-name>ReportServlet</servlet-name>
         <url-pattern>/admin/reports</url-pattern>
     </servlet-mapping>
+    -->
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

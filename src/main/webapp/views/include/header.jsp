@@ -38,6 +38,7 @@
 
             <c:if test="${not empty sessionScope.authUser && sessionScope.authUser.vaiTro == 'Quản lý'}">
                 <a href="${pageContext.request.contextPath}/admin/rooms">Quản lý phòng</a>
+                <a href="${pageContext.request.contextPath}/admin/bookings">Quản lý đặt phòng</a>
                 <a href="${pageContext.request.contextPath}/admin/types">Loại phòng</a>
                 <a href="${pageContext.request.contextPath}/admin/reports">Báo cáo</a>
             </c:if>
