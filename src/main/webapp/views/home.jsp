@@ -3,21 +3,21 @@
 <section class="hero">
     <div class="hero-inner">
         <div>
-            <span class="eyebrow">Nhom 4 hotel</span>
-            <h1>Quản lý khách sạn rõ ràng, đặt phòng nhanh và dễ dùng mỗi ngày</h1>
-            <p>Giao diện được làm gọn hơn theo phong cách website thật: màu sáng, điểm nhấn xanh ngọc và khối thông tin rõ ràng. Hệ thống hỗ trợ khách tìm phòng, đặt phòng, lễ tân xử lý nhận trả phòng và quản lý theo dõi báo cáo.</p>
+            <span class="eyebrow">Pleiades hotel</span>
+            <h1>Không gian nghỉ dưỡng tiện nghi, dịch vụ lưu trú chuyên nghiệp</h1>
+            <p>Tọa lạc tại vị trí đắc địa với lối kiến trúc hiện đại, Pleiades Hotel mang đến không gian lưu trú lý tưởng cho cả khách du lịch và khách công tác. Chúng tôi cam kết cung cấp hệ thống phòng nghỉ đa dạng, không gian yên tĩnh cùng dịch vụ chăm sóc khách hàng tận tâm, chu đáo trong suốt kỳ nghỉ của bạn.</p>
             <div class="pill-row">
                 <a class="btn" href="${pageContext.request.contextPath}/rooms">Xem phòng</a>
                 <a class="btn secondary" href="${pageContext.request.contextPath}/login">Đăng nhập hệ thống</a>
             </div>
         </div>
         <div class="hero-panel">
-            <span class="sale-badge">Hệ thống quản lý khách sạn</span>
-            <h2>Nhóm 4 Hotel</h2>
+            <span class="sale-badge">Ưu đãi đặt phòng trực tuyến</span>
+            <h2>Pleiades Hotel</h2>
             <div class="panel-features">
-                <span>✓ Tìm phòng theo ngày</span>
-                <span>✓ Quản lý đặt phòng</span>
-                <span>✓ Giao diện dễ nhìn</span>
+				<span>✓ Miễn phí bữa sáng theo tiêu chuẩn</span>
+                <span>✓ Hỗ trợ nhận/trả phòng nhanh chóng</span>
+                <span>✓ Dịch vụ lễ tân & an ninh trực 24/7</span>
             </div>
             <a class="btn ghost" href="${pageContext.request.contextPath}/rooms">Xem danh sách phòng</a>
             <div class="panel-stats">
@@ -33,12 +33,33 @@
     <div><label>Loại phòng</label><select name="loaiId"><option value="">Tất cả</option><c:forEach var="type" items="${types}"><option value="${type.id}">${type.tenLoai}</option></c:forEach></select></div>
     <div style="display:flex;align-items:end"><button class="btn" type="submit">Tìm phòng</button></div>
 </form>
+
 <main class="container">
     <div class="quick-links">
-        <a class="quick-link" href="${pageContext.request.contextPath}/rooms"><div>🛏️</div><div><b>Xem danh sách phòng</b><span>Tìm nhanh phòng đang mở bán</span></div></a>
-        <a class="quick-link" href="${pageContext.request.contextPath}/bookings"><div>📋</div><div><b>Quản lý đặt phòng</b><span>Theo dõi đơn đặt và trạng thái</span></div></a>
-        <a class="quick-link" href="${pageContext.request.contextPath}/admin/reports"><div>📊</div><div><b>Báo cáo hoạt động</b><span>Dành cho quản lý khách sạn</span></div></a>
+    <div class="quick-link">
+        <div>🛏️</div>
+        <div>
+            <b>Không gian yên tĩnh</b>
+            <span>Hệ thống phòng cách âm, trang thiết bị hiện đại tiêu chuẩn</span>
+        </div>
     </div>
+
+    <div class="quick-link">
+        <div>📋</div>
+        <div>
+            <b>Thủ tục nhanh chóng</b>
+            <span>Nhận và trả phòng tối giản, tiết kiệm thời gian của bạn</span>
+        </div>
+    </div>
+
+    <div class="quick-link">
+        <div>🔑</div>
+        <div>
+            <b>An ninh tuyệt đối</b>
+            <span>Hệ thống khóa từ thông minh và đội ngũ trực ban 24/7</span>
+        </div>
+    </div>
+</div>
 
     <div class="section-title"><h2>Phòng nổi bật</h2><a href="${pageContext.request.contextPath}/rooms">Xem tất cả</a></div>
     <div class="grid">

@@ -138,4 +138,32 @@ public class DatPhongDAO implements CrudDAO<DatPhong> {
     public void delete(int id) {
         JdbcUtil.update("DELETE FROM DatPhong WHERE id=?", id);
     }
+    
+    public List<DatPhong> findReadyForCheckout(String keyword) {
+        List<DatPhong> list = new ArrayList<>();
+        List<Object> params = new ArrayList<>();
+        
+        StringBuilder sql = new StringBuilder(baseSql() + 
+            " WHERE dp.trang_thai = N'Đã nhận phòng' " +
+            " AND dp.id NOT IN (SELECT dat_phong_id FROM HoaDon)");
+
+        if (keyword != null && !keyword.isBlank()) {
+            sql.append(" AND (kh.ho_ten LIKE ? OR kh.email LIKE ? OR p.so_phong LIKE ?)");
+            String kw = "%" + keyword.trim() + "%";
+            params.add(kw); params.add(kw); params.add(kw);
+        }
+        
+        sql.append(" ORDER BY dp.ngay_nhan ASC");
+
+        try (Connection conn = JdbcUtil.getConnection();
+             PreparedStatement ps = JdbcUtil.prepare(conn, sql.toString(), params.toArray());
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                list.add(map(rs));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
 }
