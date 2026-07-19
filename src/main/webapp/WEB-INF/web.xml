@@ -128,6 +128,36 @@
         <url-pattern>/admin/reports</url-pattern>
     </servlet-mapping>
     -->
+    
+    <servlet>
+	    <servlet-name>PaymentServlet</servlet-name>
+	    <servlet-class>com.nhom4.hotel.servlet.PaymentServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>PaymentServlet</servlet-name>
+	    <url-pattern>/invoices</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>CheckInServlet</servlet-name>
+	    <servlet-class>com.nhom4.hotel.servlet.CheckInServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>CheckInServlet</servlet-name>
+	    <url-pattern>/checkin</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>CheckOutServlet</servlet-name>
+	    <servlet-class>com.nhom4.hotel.servlet.CheckOutServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>CheckOutServlet</servlet-name>
+	    <url-pattern>/checkout</url-pattern>
+	</servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
