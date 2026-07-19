@@ -156,6 +156,16 @@
 	    <servlet-name>CheckOutServlet</servlet-name>
 	    <url-pattern>/checkout</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>UserServlet</servlet-name>
+	    <servlet-class>com.nhom4.hotel.servlet.UserServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>UserServlet</servlet-name>
+	    <url-pattern>/admin/users</url-pattern>
+	</servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

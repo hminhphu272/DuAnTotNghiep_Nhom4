@@ -27,13 +27,20 @@
                 <a href="${pageContext.request.contextPath}/bookings">Đặt phòng</a>
             </c:if>
 
+            <%-- Khối menu dành riêng cho tài khoản Quản lý --%>
             <c:if test="${not empty sessionScope.authUser && sessionScope.authUser.vaiTro == 'Quản lý'}">
                 <a href="${pageContext.request.contextPath}/admin/rooms">Quản lý phòng</a>
                 <a href="${pageContext.request.contextPath}/admin/bookings">Quản lý đặt phòng</a>
                 <a href="${pageContext.request.contextPath}/admin/types">Loại phòng</a>
-                <a href="${pageContext.request.contextPath}/admin/reports">Báo cáo</a>
+                
+                <%-- Thêm mới đường dẫn Quản lý người dùng --%>
+                <a href="${pageContext.request.contextPath}/admin/users">Quản lý người dùng</a>
+                
+                <%-- Giữ nguyên Báo cáo đồng bộ đường dẫn Servlet của bạn (/admin/reports) --%>
+                <a href="${pageContext.request.contextPath}/admin/reports">Báo cáo thống kê</a>
             </c:if>
 
+            <%-- Khối menu dành cho Lễ tân hoặc Quản lý --%>
             <c:if test="${not empty sessionScope.authUser && (sessionScope.authUser.vaiTro == 'Lễ tân' || sessionScope.authUser.vaiTro == 'Quản lý')}">
                 <a href="${pageContext.request.contextPath}/checkin">Nhận phòng</a>
                 <a href="${pageContext.request.contextPath}/checkout">Trả phòng</a>

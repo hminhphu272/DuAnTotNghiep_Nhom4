@@ -10,7 +10,7 @@ public class JdbcUtil {
     private static final String DEFAULT_URL = "jdbc:sqlserver://localhost:1433;databaseName=DuAnTotNghiep_Nhom4;encrypt=true;trustServerCertificate=true;";
     private static final String URL = System.getenv().getOrDefault("HOTEL_DB_URL", DEFAULT_URL);
     private static final String USER = System.getenv().getOrDefault("HOTEL_DB_USER", "sa");
-    private static final String PASSWORD = System.getenv().getOrDefault("HOTEL_DB_PASSWORD", "123456");
+    private static final String PASSWORD = System.getenv().getOrDefault("HOTEL_DB_PASSWORD", "748423");
 
     static {
         try {
