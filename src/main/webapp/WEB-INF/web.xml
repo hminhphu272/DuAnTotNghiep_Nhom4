@@ -72,18 +72,16 @@
         <url-pattern>/admin/rooms/delete</url-pattern>
     </servlet-mapping>
 
-    <!-- TẠM COMMENT: chưa có LoaiPhongServlet.java, sẽ mở lại khi teammate code xong
-    <servlet>
-        <servlet-name>LoaiPhongServlet</servlet-name>
-        <servlet-class>com.nhom4.hotel.servlet.LoaiPhongServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LoaiPhongServlet</servlet-name>
-        <url-pattern>/admin/types</url-pattern>
-        <url-pattern>/admin/types/save</url-pattern>
-        <url-pattern>/admin/types/delete</url-pattern>
-    </servlet-mapping>
-    -->
+<servlet>
+    <servlet-name>LoaiPhongServlet</servlet-name>
+    <servlet-class>com.nhom4.hotel.servlet.LoaiPhongServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>LoaiPhongServlet</servlet-name>
+    <url-pattern>/admin/types</url-pattern>
+    <url-pattern>/admin/types/save</url-pattern>
+    <url-pattern>/admin/types/delete</url-pattern>
+</servlet-mapping>
 
     <servlet>
         <servlet-name>BookingServlet</servlet-name>
