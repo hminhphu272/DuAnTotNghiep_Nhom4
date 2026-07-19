@@ -6,7 +6,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HoaDonDAO implements CrudDAO<HoaDon> {
 
@@ -110,5 +112,54 @@ public class HoaDonDAO implements CrudDAO<HoaDon> {
     @Override
     public void delete(int id) {
         JdbcUtil.update("DELETE FROM HoaDon WHERE id=?", id);
+    }
+    
+    public double getTongDoanhThu() {
+        String sql = "SELECT SUM(tong_tien) FROM HoaDon WHERE trang_thai = N'Đã thanh toán'";
+        try (Connection conn = JdbcUtil.getConnection(); // Hoặc hàm lấy kết nối của bạn
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getDouble(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getTongHoaDon() {
+        String sql = "SELECT COUNT(*) FROM HoaDon WHERE trang_thai = N'Đã thanh toán'";
+        try (Connection conn = JdbcUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public Map<String, Double> getDoanhThuTheoThang() {
+        Map<String, Double> map = new LinkedHashMap<>();
+        String sql = "SELECT " +
+                     "  RIGHT('0' + CAST(MONTH(ngay_lap) AS VARCHAR(2)), 2) + '/' + CAST(YEAR(ngay_lap) AS VARCHAR(4)) AS ThangNam, " +
+                     "  SUM(tong_tien) AS DoanhThu " +
+                     "FROM HoaDon " +
+                     "WHERE trang_thai = N'Đã thanh toán' " +
+                     "GROUP BY YEAR(ngay_lap), MONTH(ngay_lap) " +
+                     "ORDER BY YEAR(ngay_lap) ASC, MONTH(ngay_lap) ASC";
+        try (Connection conn = JdbcUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                map.put(rs.getString("ThangNam"), rs.getDouble("DoanhThu"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return map;
     }
 }
