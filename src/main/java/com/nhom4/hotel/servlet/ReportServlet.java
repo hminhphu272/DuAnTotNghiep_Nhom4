@@ -23,6 +23,6 @@ public class ReportServlet extends HttpServlet {
         req.setAttribute("tongHoaDon", tongHoaDon);
         req.setAttribute("bieuDoDoanhThu", bieuDoDoanhThu);
 
-        req.getRequestDispatcher("/report.jsp").forward(req, resp);
+        req.getRequestDispatcher("/views/report.jsp").forward(req, resp);
     }
 }

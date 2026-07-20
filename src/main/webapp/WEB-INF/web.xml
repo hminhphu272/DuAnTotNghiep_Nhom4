@@ -116,7 +116,6 @@
     </servlet-mapping>
     -->
 
-    <!-- TẠM COMMENT: chưa có ReportServlet.java, sẽ mở lại khi teammate code xong
     <servlet>
         <servlet-name>ReportServlet</servlet-name>
         <servlet-class>com.nhom4.hotel.servlet.ReportServlet</servlet-class>
@@ -125,7 +124,6 @@
         <servlet-name>ReportServlet</servlet-name>
         <url-pattern>/admin/reports</url-pattern>
     </servlet-mapping>
-    -->
     
     <servlet>
 	    <servlet-name>PaymentServlet</servlet-name>
