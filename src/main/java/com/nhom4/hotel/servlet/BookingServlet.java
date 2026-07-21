@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
+import com.nhom4.hotel.email.EmailService;
 
 /**
  * Servlet dành cho khách hàng: tạo đặt phòng, xem danh sách đặt phòng của mình, hủy đặt phòng.
@@ -106,6 +107,69 @@ public class BookingServlet extends HttpServlet {
         booking.setNgayTra(DateUtil.sqlDate(ngayTra));
         booking.setTrangThai("Chờ xác nhận");
         datPhongDAO.insert(booking);
+
+        try {
+
+            if (user.getEmail() != null && !user.getEmail().isBlank()) {
+
+                String html = """
+                    <html>
+                    <body style="font-family:Arial">
+
+                    <h2>Đặt phòng thành công</h2>
+
+                    <p>Xin chào <b>%s</b>,</p>
+
+                    <p>Bạn đã gửi yêu cầu đặt phòng thành công.</p>
+
+                    <table border="1" cellpadding="8">
+
+                        <tr>
+                            <td>Phòng</td>
+                            <td>%s</td>
+                        </tr>
+
+                        <tr>
+                            <td>Ngày nhận</td>
+                            <td>%s</td>
+                        </tr>
+
+                        <tr>
+                            <td>Ngày trả</td>
+                            <td>%s</td>
+                        </tr>
+
+                        <tr>
+                            <td>Trạng thái</td>
+                            <td>Chờ xác nhận</td>
+                        </tr>
+
+                    </table>
+
+                    <br>
+
+                    Cảm ơn bạn đã sử dụng dịch vụ.
+
+                    </body>
+                    </html>
+                    """.formatted(
+                            user.getHoTen(),
+                            room.getSoPhong(),
+                            ngayNhan,
+                            ngayTra
+                    );
+
+                EmailService.send(
+                        user.getEmail(),
+                        "Xác nhận đặt phòng",
+                        html
+                );
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         resp.sendRedirect(req.getContextPath() + "/bookings");
     }

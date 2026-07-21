@@ -2,6 +2,7 @@ package com.nhom4.hotel.servlet;
 
 import com.nhom4.hotel.dao.DatPhongDAO;
 import com.nhom4.hotel.dao.PhongDAO;
+import com.nhom4.hotel.email.EmailService;
 import com.nhom4.hotel.entity.DatPhong;
 import com.nhom4.hotel.util.ParamUtil;
 import jakarta.servlet.ServletException;
@@ -39,6 +40,37 @@ public class CheckInServlet extends HttpServlet {
         }
 
         datPhongDAO.updateStatus(booking.getId(), "Đã nhận phòng");
+
+     // lấy lại dữ liệu sau khi cập nhật (nếu cần)
+     booking = datPhongDAO.findById(id);
+
+     try {
+
+    	    if (booking.getEmailKhach() != null && !booking.getEmailKhach().isBlank()) {
+
+    	        EmailService.send(
+    	            booking.getEmailKhach(),
+    	            "Xác nhận nhận phòng",
+    	            """
+    	            <html>
+    	            <body style="font-family: Arial">
+    	                <h2>Nhận phòng thành công</h2>
+
+    	                <p>Xin chào <b>%s</b>,</p>
+
+    	                <p>Bạn đã hoàn tất thủ tục nhận phòng.</p>
+
+    	                <p>Chúc bạn có kỳ nghỉ vui vẻ!</p>
+    	            </body>
+    	            </html>
+    	            """.formatted(booking.getHoTenKhach())
+    	        );
+
+    	    }
+
+    	} catch (Exception e) {
+    	    e.printStackTrace();
+    	}
         phongDAO.updateStatus(booking.getPhongId(), "Đang sử dụng");
         resp.sendRedirect(req.getContextPath() + "/checkin?success=1");
     }
